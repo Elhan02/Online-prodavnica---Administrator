@@ -13,7 +13,7 @@ let products = [
 
 function createProductRows() {
   let table = document.querySelector("#products-body");
-
+  table.innerHTML = "";
   for (let i = 0; i < products.length; i++) {
     let tr = document.createElement("tr");
     let id = document.createElement("td");
@@ -55,4 +55,28 @@ function productDetails(product) {
   detailsDiv.appendChild(detailsP);
 }
 
-document.addEventListener('DOMContentLoaded', createProductRows())
+function handleForm() {
+  let button = document.querySelector("button");
+  button.addEventListener("click", function () {
+    const form = document.querySelector("#product-add");
+    const formData = new FormData(form);
+
+    const inputName = formData.get("productName");
+    const inputPrice = formData.get("productPrice");
+    const inputDesc = formData.get("productDescription");
+
+    if (inputName && inputPrice && inputDesc) {
+      const newProduct = new Product(inputName, inputPrice, inputDesc);
+      products.push(newProduct);
+
+      createProductRows();
+    } else {
+      return alert("Polja u formi ne mogu biti prazna.");
+    }
+  });
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  (createProductRows(), handleForm())
+);

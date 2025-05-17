@@ -6,10 +6,16 @@ class Product {
   }
 }
 
-let products = [
-  new Product("TV", 350, '60" Smart televizor'),
-  new Product("Toster", 30, "smart toster high class"),
-];
+let products = [];
+
+function initializeProducts(){
+  let productString = localStorage.getItem("products");
+  if (productString){
+    products = JSON.parse(productString);
+  }
+  createProductRows();
+  handleForm();
+}
 
 function createProductRows() {
   let table = document.querySelector("#products-body");
@@ -68,6 +74,7 @@ function handleForm() {
     if (inputName && inputPrice && inputDesc) {
       const newProduct = new Product(inputName, inputPrice, inputDesc);
       products.push(newProduct);
+      localStorage.setItem("products", JSON.stringify(products));
 
       createProductRows();
     } else {
@@ -78,5 +85,5 @@ function handleForm() {
 
 document.addEventListener(
   "DOMContentLoaded",
-  (createProductRows(), handleForm())
+  initializeProducts()
 );

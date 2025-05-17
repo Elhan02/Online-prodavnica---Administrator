@@ -1,34 +1,47 @@
 .container {
   display: flex;
-  margin-left: 50px;
 }
-.container table {
-  border-collapse: collapse;
-}
-.container table td, .container table th {
-  padding: 10px;
-  border-collapse: collapse;
-}
-.container table th {
-  background-color: lightgray;
-  padding: 15px;
-}
-.container .form {
+
+table {
+  width: 200px;
   margin-left: 50px;
   border: 1px solid black;
+  border-collapse: collapse;
 }
-.container .form #product-add {
+table td, table th {
+  text-align: center;
+  border: 1px solid black;
+}
+table th {
+  background-color: lightgray;
+}
+
+.form {
+  margin-left: 50px;
+  border: 1px solid black;
   padding: 10px;
-  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
-.container .form #product-add input {
+.form input {
   border: none;
   border-bottom: 1px solid black;
+}
+.form button {
+  margin-top: 10px;
+  width: 50px;
 }
 
 .product-details {
   margin-left: 50px;
-  margin-top: 30px;
+  margin-top: 20px;
+  border: 1px solid black;
+  width: 200px;
+}
+.product-details p {
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
